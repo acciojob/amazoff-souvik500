@@ -283,16 +283,18 @@ class OrderRepository
     public void deleteOrderById(String oId)
     {
         String pId = null;
-        //List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         int size = 0;
         if (orderDb.containsKey(oId))
         {
             if (orderPartnerPair.containsKey(oId)) pId = orderPartnerPair.get(oId);
             orderPartnerPair.remove(oId);
-            if (partnerOrderDb.containsKey(pId)) size = partnerOrderDb.get(pId).size();
+            if (partnerOrderDb.containsKey(pId)) list = partnerOrderDb.get(pId);
+            list.remove(oId);
+            partnerOrderDb.put(pId,list);
 
             DeliveryPartner partner = partnerDb.get(pId);
-            partner.setNumberOfOrders(size-1);
+            partner.setNumberOfOrders(list.size());
             partnerDb.put(pId,partner);
         }
         orderDb.remove(oId);
