@@ -236,7 +236,7 @@ class OrderRepository
         {
             for (String oId: partnerOrderDb.get(pId))
             {
-                if (orderDb.get(oId).getDeliveryTime() < convertTime) count++;
+                if (orderDb.get(oId).getDeliveryTime() > convertTime) count++;
             }
         }
         return count;
