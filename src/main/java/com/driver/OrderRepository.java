@@ -254,7 +254,7 @@ class OrderRepository
 
         //convert int time to String time like (HH:MM)
         String startTime = "00:00";
-        int HH = maxTime / 60 + Integer.parseInt(startTime.substring(0,2));
+        int HH = maxTime / 60 + Integer.parseInt(startTime.substring(0,1));
         int MM = maxTime % 60 + Integer.parseInt(startTime.substring(3));
 
         String newtime = HH+":"+MM;
