@@ -196,7 +196,7 @@ class OrderRepository
     public DeliveryPartner getPartnerById(String pId) {return partnerDb.get(pId);}
 
 
-    public int getOrderCountByPartnerId(String pId)
+    public Integer getOrderCountByPartnerId(String pId)
     {
         List<String> orderList = new ArrayList<>();
         if (partnerOrderDb.containsKey(pId)) orderList = partnerOrderDb.get(pId);
@@ -212,7 +212,7 @@ class OrderRepository
         return ol;
     }
 
-    public int getCountOfUnassignedOrders()
+    public Integer getCountOfUnassignedOrders()
     {
         //Allorder list - everypartner order carring
         int countParticularPartner = orderPartnerPair.size();
@@ -268,7 +268,7 @@ class OrderRepository
         {
             for (String oId: partnerOrderDb.get(pId)) //hs.add(oId);
             {
-                if(orderPartnerPair.get(oId).equals(pId)) orderPartnerPair.remove(oId);
+                if(orderPartnerPair.containsKey(oId)) orderPartnerPair.remove(oId);
             }
             partnerOrderDb.remove(pId);
             partnerDb.remove(pId);
