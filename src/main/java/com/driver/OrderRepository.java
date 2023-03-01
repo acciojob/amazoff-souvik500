@@ -250,15 +250,27 @@ class OrderRepository
                 time.add(order.getDeliveryTime());
             }
         }
-        int maxTime = Collections.max(time);
-
-        //convert int time to String time like (HH:MM)
-        String startTime = "00:00";
-        int HH = maxTime / 60 + Integer.parseInt(startTime.substring(0,1));
-        int MM = maxTime % 60 + Integer.parseInt(startTime.substring(3));
-
-        String newtime = HH+":"+MM;
-        return newtime;
+        int lastDeliveryTime = Collections.max(time);
+        int hour = lastDeliveryTime/60;
+        int min = lastDeliveryTime%60;
+        String hourInStr = String.valueOf(hour);
+        String minInStr = String.valueOf(min);
+        if(hourInStr.length()==1){
+            hourInStr = String.format("0%s",hourInStr);
+        }
+        if(minInStr.length()==1){
+            minInStr = String.format("0%s",minInStr);
+        }
+        return String.format("%s:%s",hourInStr,minInStr);
+//        int maxTime = Collections.max(time);
+//
+//        //convert int time to String time like (HH:MM)
+//        String startTime = "00:00";
+//        int HH = maxTime / 60 + Integer.parseInt(startTime.substring(0,1));
+//        int MM = maxTime % 60 + Integer.parseInt(startTime.substring(3));
+//
+//        String newtime = HH+":"+MM;
+//        return newtime;
     }
 
     public void deletePartnerById(String pId)
