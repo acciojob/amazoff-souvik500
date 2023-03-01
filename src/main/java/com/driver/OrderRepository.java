@@ -215,13 +215,9 @@ class OrderRepository
     public int getCountOfUnassignedOrders()
     {
         //Allorder list - everypartner order carring
-        int countParticularPartner = 0;
-        int count_AllOrder = orderDb.keySet().size();
+        int countParticularPartner = orderPartnerPair.size();
+        int count_AllOrder = orderDb.size();
 
-        for (String pId: partnerOrderDb.keySet())
-        {
-            countParticularPartner += partnerOrderDb.get(pId).size();
-        }
         return count_AllOrder - countParticularPartner;
     }
 
@@ -272,7 +268,7 @@ class OrderRepository
         {
             for (String oId: partnerOrderDb.get(pId)) //hs.add(oId);
             {
-                if(orderPartnerPair.containsKey(oId)) orderPartnerPair.remove(oId);
+                if(orderPartnerPair.get(oId).equals(pId)) orderPartnerPair.remove(oId);
             }
             partnerOrderDb.remove(pId);
             partnerDb.remove(pId);
