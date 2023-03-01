@@ -25,4 +25,12 @@ public class DeliveryPartner {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "DeliveryPartner{" +
+                "id='" + id + '\'' +
+                ", numberOfOrders=" + numberOfOrders +
+                '}';
+    }
 }

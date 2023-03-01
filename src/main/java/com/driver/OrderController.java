@@ -48,7 +48,7 @@ public class OrderController {
         Order order= orderService.getOrderById(orderId);
         //order should be returned with an orderId.
 
-        return new ResponseEntity<>(order, HttpStatus.CREATED);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     @GetMapping("/get-partner-by-id/{partnerId}")

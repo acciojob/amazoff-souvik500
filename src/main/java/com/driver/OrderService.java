@@ -15,8 +15,8 @@ public class OrderService {
         orderRepository.addOrder(order);
     }
 
-    public void addPartner(String partnerId){
-        orderRepository.addPartner(partnerId);
+    public void addPartner(String partner){
+        orderRepository.addPartner(partner);
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId){
@@ -63,3 +63,4 @@ public class OrderService {
         orderRepository.deleteOrderById(orderId);
     }
 }
+
