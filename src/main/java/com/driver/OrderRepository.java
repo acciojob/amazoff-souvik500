@@ -254,11 +254,11 @@ class OrderRepository
 
         //convert int time to String time like (HH:MM)
         String startTime = "00:00";
-        int HH = maxTime / 60 + Integer.parseInt(startTime.substring(0,1));
-        int MM = maxTime % 60 + Integer.parseInt(startTime.substring(3));
+        int HH = maxTime / 60;
+        int MM = maxTime % 60;
 
         //String newtime = HH+":"+MM;
-        return String.format("%s:%s",HH,MM);
+        return String.format("%02d:%02d",HH,MM);
     }
 
     public void deletePartnerById(String pId)
