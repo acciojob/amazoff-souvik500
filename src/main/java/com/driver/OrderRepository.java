@@ -272,7 +272,7 @@ class OrderRepository
         {
             for (String oId: partnerOrderDb.get(pId)) //hs.add(oId);
             {
-                if(orderPartnerPair.get(oId).equals(pId)) orderPartnerPair.remove(oId);
+                if(orderPartnerPair.containsKey(oId)) orderPartnerPair.remove(oId);
             }
             partnerOrderDb.remove(pId);
             partnerDb.remove(pId);
